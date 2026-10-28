@@ -59,8 +59,8 @@ def sahne_uret(istem):
         return Image.open(yerel).convert('RGB')
     hesap = os.environ['CF_ACCOUNT_ID']
     url = f'https://api.cloudflare.com/client/v4/accounts/{hesap}/ai/run/@cf/black-forest-labs/flux-1-schnell'
-    tam = (istem + ', cinematic photography, dramatic warm amber light, shallow depth of field, '
-           'empty space in the center foreground for a product, no text, no letters, no logos, no watermark, no people')
+    tam = ('deserted empty scene with nobody in it, ' + istem + ', cinematic photography, dramatic warm amber light, shallow depth of field, '
+           'empty space in the center foreground for a product, no text, no letters, no logos, no watermark, no humans, no person, unoccupied')
     son = ''
     for deneme in range(3):
         r = requests.post(url, headers={'Authorization': 'Bearer ' + os.environ['CF_API_TOKEN']},
@@ -274,7 +274,7 @@ def kapak(sahne, urun, is_, W=1080, H=1350, no=1, toplam=1):
     c = kapla(sahne, W, H).convert('RGBA')
     c.alpha_composite(gradyan(W, H))
     urun_yerlestir(c, urun, W // 2, int(H * (0.70 if dikey else 0.685)),
-                   int(H * (0.40 if dikey else 0.44)), max_genislik=int(W * 0.62))
+                   int(H * (0.38 if dikey else 0.41)), max_genislik=int(W * 0.60))
     d = ImageDraw.Draw(c)
     hook_ciz(d, W, hook_satirlari(d, is_, W), int(H * (0.10 if dikey else 0.065)), W - 110,
              boyut=int(118 * k))
@@ -285,7 +285,7 @@ def kapak(sahne, urun, is_, W=1080, H=1350, no=1, toplam=1):
         ortala(d, W, is_['urun_alt'], y + int(58 * k), font('govde', int(32 * k)), (225, 225, 225))
     y2 = int(H * (0.835 if dikey else 0.845))
     cta_hap(d, W, y2, is_.get('site', 'otomotodunyasi.com'), boyut=int(44 * k))
-    ortala(d, W, 'Hemen sipariş ver  →  link profilde', y2 + int(100 * k), font('govde', int(30 * k)), (230, 230, 230))
+    ortala(d, W, 'Hemen sipariş ver  »  link profilde', y2 + int(100 * k), font('govde', int(30 * k)), (230, 230, 230))
     sayfa_no(d, W, no, toplam)
     logo_koy(c, boy=int(H * (0.08 if dikey else 0.11)))
     return c.convert('RGB')
