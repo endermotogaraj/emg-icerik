@@ -7,10 +7,6 @@ on:
         description: 'İş bilgisi (JSON)'
         required: true
 
-concurrency:
-  group: uretim
-  cancel-in-progress: false
-
 permissions:
   contents: write
 
