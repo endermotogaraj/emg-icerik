@@ -287,7 +287,7 @@ def kapak(sahne, urun, is_, W=1080, H=1350, no=1, toplam=1):
     cta_hap(d, W, y2, is_.get('site', 'otomotodunyasi.com'), boyut=int(44 * k))
     ortala(d, W, 'Hemen sipariş ver  »  link profilde', y2 + int(100 * k), font('govde', int(30 * k)), (230, 230, 230))
     sayfa_no(d, W, no, toplam)
-    logo_koy(c, boy=int(H * (0.08 if dikey else 0.11)))
+    logo_koy(c, boy=int(H * (0.11 if dikey else 0.155)), kenar=30)
     return c.convert('RGB')
 
 
@@ -318,7 +318,7 @@ def bilgi(sahne, urun, is_, slayt, W=1080, H=1350, no=2, toplam=3):
         d.text((70, y), s, font=f_m, fill=WHITE)
         y += int(f_m.size * 1.35)
     sayfa_no(d, W, no, toplam)
-    logo_koy(c, boy=110)
+    logo_koy(c, boy=190, kenar=30)
     return c.convert('RGB')
 
 
@@ -342,7 +342,7 @@ def son_slayt(sahne, urun, is_, slayt, W=1080, H=1350, no=3, toplam=3):
     cta_hap(d, W, int(H * 0.80), is_.get('site', 'otomotodunyasi.com'), boyut=52)
     ortala(d, W, 'Link profilde  •  DM\'den sorabilirsin', int(H * 0.80) + 120, font('govde', 32), (230, 230, 230))
     sayfa_no(d, W, no, toplam)
-    logo_koy(c, boy=int(H * 0.11))
+    logo_koy(c, boy=int(H * 0.155), kenar=30)
     return c.convert('RGB')
 
 
